@@ -1,15 +1,15 @@
 # Copyright (c) 2015-2017, NVIDIA CORPORATION.  All rights reserved.
 from __future__ import absolute_import
 
-from .caffe_framework import CaffeFramework
+#from .caffe_framework import CaffeFramework
 from .framework import Framework
-from .torch_framework import TorchFramework
+#from .torch_framework import TorchFramework
 from digits.config import config_value
 
 __all__ = [
     'Framework',
-    'CaffeFramework',
-    'TorchFramework',
+#    'CaffeFramework',
+#    'TorchFramework',
 ]
 
 if config_value('tensorflow')['enabled']:
@@ -21,13 +21,13 @@ if config_value('tensorflow')['enabled']:
 #
 
 # torch is optional
-torch = TorchFramework() if config_value('torch')['enabled'] else None
+#torch = TorchFramework() if config_value('torch')['enabled'] else None
 
 # tensorflow is optional
 tensorflow = TensorflowFramework() if config_value('tensorflow')['enabled'] else None
 
 # caffe is mandatory
-caffe = CaffeFramework()
+#caffe = CaffeFramework()
 
 #
 #  utility functions
@@ -39,9 +39,7 @@ def get_frameworks():
     return list of all available framework instances
     there may be more than one instance per framework class
     """
-    frameworks = [caffe]
-    if torch:
-        frameworks.append(torch)
+    frameworks = []
     if tensorflow:
         frameworks.append(tensorflow)
     return frameworks
